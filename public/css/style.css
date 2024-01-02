@@ -1,0 +1,535 @@
+/* Reset beberapa gaya default */
+body,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0; /* Menghapus margin default */
+}
+
+body {
+  font-family: "Hammersmith One", sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gaya Bar Navigasi */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #00ffff,
+    #0000ff
+  ); /* Gradient biru */
+  background-size: 200% 200%; /* Ukuran lebih besar untuk menutupi keseluruhan header */
+  animation: movingBlueColor 5s linear infinite; /* Sesuaikan durasi sesuai kebutuhan */
+  padding: 25px;
+  color: white;
+}
+
+@keyframes movingBlueColor {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0), #000, rgba(0, 0, 0, 0));
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  animation: movingBlackGlow 5s linear infinite;
+}
+
+@keyframes movingBlackGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+header img.logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* Tambahkan ini ke stylesheet utama Anda */
+nav {
+  display: flex;
+  align-items: center; /* Pusatkan secara vertikal */
+  position: relative; /* Posisi relatif untuk elemen semu */
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Sesuaikan ketebalan sesuai kebutuhan */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    #000,
+    rgba(0, 0, 0, 0)
+  ); /* Sesuaikan warna sesuai kebutuhan */
+  bottom: 0;
+  left: 0;
+  pointer-events: none; /* Menjadikan elemen semu non-interaktif */
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  margin-right: 10px;
+  position: relative; /* Posisi relatif untuk efek cahaya */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Sesuaikan ketebalan sesuai kebutuhan */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    #000,
+    rgba(0, 0, 0, 0)
+  ); /* Sesuaikan warna sesuai kebutuhan */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0); /* Awalnya disetel ke lebar nol */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease; /* Menambahkan efek transisi */
+}
+
+nav a:hover::after {
+  transform: scaleX(1); /* Perluas hingga lebar penuh saat diarahkan */
+  transform-origin: bottom left;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+/* Tambahkan ini ke stylesheet utama Anda */
+.menu-icon {
+  width: 55px; 
+  height: 55px; 
+  margin-right: 5px;
+}
+
+.main-content {
+  flex-grow: 1; /* Tumbuh untuk mengisi ruang yang tersisa */
+  overflow-y: auto; /* Tambahkan bilah gulir jika konten meluap */
+  padding: 25px;
+}
+
+#left-section {
+  position: relative;
+  order: -1;
+  display: flex;
+  align-items: center;
+}
+
+#sun-icon {
+  width: 250px; /* Sesuaikan ukuran foto sesuai kebutuhan */
+  height: 250px;
+  filter: drop-shadow(
+    0 0 20px rgba(255, 255, 0, 0.8)
+  ); /* Efek glow menggunakan filter drop shadow */
+  animation: sunglow 2s infinite alternate; /* Animasi efek glow */
+}
+
+@keyframes sunglow {
+  from {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 0, 0.8));
+  }
+  to {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 0, 1));
+    transform: translate(5px, 5px); /* Pindahkan bayangan ke kanan bawah */
+  }
+}
+
+#right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#right-section h2 {
+  margin: 10px 0; /* Sesuaikan margin sesuai kebutuhan */
+  font-size: 24px; /* Sesuaikan ukuran font sesuai kebutuhan */
+  text-transform: uppercase; /* Sesuaikan gaya teks sesuai kebutuhan */
+  color: #333; /* Sesuaikan warna teks sesuai kebutuhan */
+}
+
+#right-section p {
+  margin: 0; /* Menghapus margin default pada p */
+}
+
+#right-section > div {
+  display: flex;
+  justify-content: center;
+}
+
+#right-section a {
+  margin: 10px; /* Jarak antara tautan */
+}
+
+#github-icon,
+#ig-icon {
+  width: 50px; /* Sesuaikan ukuran ikon sesuai kebutuhan */
+  height: 50px;
+}
+
+/* Home Page Styles */
+#index-content {
+  background-image: url("/img/BG_Home.jpg");
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  flex-grow: 1; /* Grow untuk mengisi ruang yang tersisa */
+}
+
+/* Project Page Styles */
+#project-content {
+  background-image: url("/img/BG_Project.jpg");
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  flex-grow: 1; 
+}
+
+#project-content p {
+  margin-top: 25px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.project-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: moveUp 2s ease infinite; /* Sesuaikan durasi sesuai kebutuhan */
+}
+
+@keyframes moveUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Menyesuaikan jarak pergerakan teks */
+  }
+}
+
+/* Search Form Styles */
+#searchForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#locationInput {
+  padding: 10px;
+  width: 200px;
+  border: none;
+  border-top-left-radius: 20px; /* Bulatkan sudut atas kiri */
+  border-bottom-left-radius: 20px; /* Bulatkan sudut bawah kiri */
+  outline: none;
+}
+
+#searchButton {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-top-right-radius: 20px; /* Bulatkan sudut atas kanan */
+  border-bottom-right-radius: 20px; /* Bulatkan sudut bawah kanan */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efek transisi pada hover */
+}
+
+#searchButton:hover {
+  background-color: #555; /* Warna latar belakang berubah pada hover */
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #00ffff,
+    #0000ff
+  ); 
+  background-size: 200% 200%; 
+  animation: movingBlueColor 5s linear infinite; 
+  padding: 25px;
+  color: white;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    #fff,
+    rgba(255, 255, 255, 0)
+  );
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  animation: movingWhiteGlow 5s linear infinite;
+}
+
+@keyframes movingWhiteGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Additional Styling */
+.list-group-item {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
+/* Tentang Page Styles */
+#tentang {
+  text-align: center;
+  padding: 50px;
+  flex-grow: 1;
+}
+
+#tentang img {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+#pesan-1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#lokasi-info {
+  margin-top: 20px;
+  font-size: 2.1em;
+  font-weight: bold;
+}
+
+#temperature-box,
+#condition-box,
+#condition-box,
+#wind-speed,
+#cloud-cover,
+#geo-coordinate {
+  display: none; /* Sembunyikan semua box secara awal */
+}
+
+#weather-boxes {
+  display: flex;
+  justify-content: center; /* Pusatkan kotak secara horizontal */
+  align-items: flex-start; /* Menyejajarkan item di atas */
+  margin-top: 20px;
+}
+
+.weather-box {
+  width: 20%;
+  border: 1px solid #ccc;
+  padding: 10px; /* Peningkatan padding untuk kotak yang lebih besar */
+  box-sizing: border-box;
+  border-radius: 10px; /* Sudut membulat untuk tampilan lebih menarik */
+  background-color: #f2f2f2; /* Warna latar terang */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan kotak yang halus */
+  margin-right: 10px; /* Menambahkan spasi di antara kedua kotak */
+}
+
+#temperature-box,
+#condition-box {
+  background-color: #12486b;
+  color: #fff; /* Warna teks untuk kontras yang lebih baik */
+}
+
+#temperature-range {
+  margin-top: 20px;
+  font-size: 1em;
+}
+#wind-speed,
+#cloud-cover {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+#geo-coordinate {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+/* Profile Styles */
+.profile-container {
+  display: flex;
+  margin-top: 20px;
+  align-items: center; /* Posisikan .profile-container di tengah vertikal */
+}
+
+.profile-image {
+  position: relative;
+  margin-left: 60px;
+  width: 200px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+  transform: skew(-20deg);
+}
+
+.profile-image img {
+  width: 190px;
+  height: 240px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  animation: glow 2s infinite alternate, moveGlow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.9);
+  }
+}
+
+@keyframes moveGlow {
+  from {
+    transform: translateX(-10px); /* Pindahkan bayangan ke kiri */
+  }
+  to {
+    transform: translateX(10px); /* Pindahkan bayangan ke kanan */
+  }
+}
+
+.profile-info {
+  flex: 0.9; /* Ubah nilai flex sesuai kebutuhan Anda */
+  padding: 20px;
+  background-color: #fff; /* Background color for the profile info box */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  margin-left: 60px; /* Margin to separate profile image and info */
+  margin-right: 20px; /* Margin to move profile info to the right */
+  transform: skew(
+    -20deg
+  ); /* Menggunakan transform untuk membuat bentuk jajar genjang pada box info */
+  position: relative; /* Menambahkan position relative untuk konten dalam .profile-info */
+}
+
+/* Penyesuaian teks di dalam jajar genjang */
+.profile-info h1,
+.profile-info p,
+.profile-info li {
+  transform: skew(
+    20deg
+  ); /* Mengembalikan teks ke bentuk normal dengan skew yang berlawanan */
+  margin: 0; /* Menghapus margin agar teks tetap rapi di dalam jajar genjang */
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+/* Education Info Styles */
+.education-info {
+  margin-top: 20px;
+}
+
+.education-info h2 {
+  transform: skew(
+    20deg
+  );   
+  margin-bottom: 10px;
+}
+
+.education-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.education-info li {
+  margin-bottom: 10px;
+}

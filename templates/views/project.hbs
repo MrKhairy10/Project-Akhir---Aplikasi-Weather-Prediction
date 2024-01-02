@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Pengaturan metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- Menambahkan ikon pada tab browser -->
+    <link rel="icon" href="/img/Logo_Sun.png">
+    <!-- Menambahkan stylesheet eksternal -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Bagian Utama Halaman -->
+    <div class="main-content" id="project-content">
+        <!-- Memasukkan file header -->
+        {{>header}}
+
+        <!-- Paragraf untuk teks proyek dengan efek animasi AOS -->
+        <p class="project-text" data-aos="fade-up" data-aos-offset="100">Gunakan website ini untuk menemukan informasi cuaca!</p>
+
+        <!-- Formulir pencarian lokasi -->
+        <form id="searchForm" data-aos="fade-up" data-aos-offset="100">
+            <input id="locationInput" class="search-input" placeholder="Masukkan lokasi">
+            <button id="searchButton" class="search-button" data-aos="zoom-in" data-aos-anchor="data-aos-anchor"
+                data-aos-offset="100">Cari Lokasi</button>
+        </form>
+
+        <!-- Paragraf dan elemen lain untuk menampilkan informasi cuaca -->
+        <p id="lokasi-info" class="lokasi-text" data-aos="fade-up" data-aos-offset="100"></p>
+        <div id="weather-boxes" data-aos="fade-up" data-aos-offset="100">
+            <div id="temperature-box" class="weather-box"></div>
+            <div id="condition-box" class="weather-box"></div>
+        </div>
+        <p id="temperature-range" data-aos="fade-up" data-aos-offset="100"></p>
+        <p id="wind-speed" data-aos="fade-up" data-aos-offset="100"></p>
+        <p id="cloud-cover" data-aos="fade-up" data-aos-offset="100"></p>
+        <p id="geo-coordinate" data-aos="fade-up" data-aos-offset="100"></p>
+
+        <!-- Menambahkan elemen baru untuk menampilkan informasi alamat secara detail -->
+        <p id="address-details" data-aos="fade-up" data-aos-offset="100"></p>
+    </div>
+
+    <!-- Menambahkan script JavaScript -->
+    <script src="/js/app.js"></script>
+    <script>
+        // Menambahkan event listener untuk form submission
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const locationInput = document.getElementById('locationInput').value;
+
+            // Ganti YOUR_MAPBOX_ACCESS_TOKEN dengan token akses Mapbox yang sesungguhnya
+            const mapboxAccessToken = 'pk.eyJ1IjoicHJvc2thOTkiLCJhIjoiY2xuNHI5ZmV5MDNpcTJ1cW1rZmUyOGV1dSJ9.RH2Q5UG7Q53Q0dZG26eziw';
+
+            // URL API Geocoding untuk mengubah nama lokasi menjadi latitude dan longitude
+            const geocodingApiUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
+                encodeURIComponent(locationInput) +
+                '.json?access_token=' + mapboxAccessToken;
+
+            // Mengambil data dari API Geocoding
+            fetch(geocodingApiUrl)
+                .then(response => response.json())
+                .then(geocodingData => {
+                    const city = geocodingData.features[0].context.find(c => c.id.startsWith('place')).text; // Mendapatkan kota/district
+                    const country = geocodingData.features[0].context.find(c => c.id.startsWith('country')).text; // Mendapatkan negara
+                    const placeDetails = city + ', ' + country; // Menggabungkan kota dan negara
+                    const coordinates = geocodingData.features[0].center;
+                    const latitude = coordinates[1];
+                    const longitude = coordinates[0];
+
+                    // URL API Prediksi Cuaca menggunakan latitude dan longitude
+                    const forecastApiUrl = 'http://api.weatherstack.com/current?access_key=6da52f1684b303ac1508518a293ea8a0&query=' + latitude + ',' + longitude;
+
+                    // Mengambil data dari API Prediksi Cuaca
+                    fetch(forecastApiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                document.getElementById('lokasi-info').textContent = data.error.info;
+                            } else {
+                                document.getElementById('lokasi-info').textContent = 'Info Cuaca di ' + placeDetails;
+                                document.getElementById('temperature-box').textContent = '' + data.current.temperature + '°C';
+                                document.getElementById('condition-box').textContent = '' + data.current.weather_descriptions[0];
+                                document.getElementById('wind-speed').textContent = 'Kecepatan angin: ' + data.current.wind_speed + ' km/jam';
+                                document.getElementById('cloud-cover').textContent = 'Awan: ' + data.current.cloudcover + '%';
+                                document.getElementById('geo-coordinate').textContent = 'Geo Koordinat: ' + latitude + ', ' + longitude;
+
+                                document.getElementById('temperature-box').style.display = 'block';
+                                document.getElementById('condition-box').style.display = 'block';
+                                document.getElementById('wind-speed').style.display = 'block';
+                                document.getElementById('cloud-cover').style.display = 'block';
+                                document.getElementById('geo-coordinate').style.display = 'block';
+
+                                // Menampilkan informasi alamat secara detail
+                                document.getElementById('address-details').textContent = 'Alamat: ' + geocodingData.features[0].place_name;
+                                document.getElementById('address-details').style.display = 'block';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching weather data:', error);
+                            document.getElementById('lokasi-info').textContent = 'Terjadi kesalahan saat mengambil data cuaca.';
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching geocoding data:', error);
+                    document.getElementById('lokasi-info').textContent = 'Terjadi kesalahan saat mencari lokasi.';
+                });
+        });
+    </script>
+    <!-- Memasukkan file footer -->
+    {{>footer}}
+</body>
+
+</html>

@@ -1,0 +1,481 @@
+/* Reset some default styles */
+body,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0; /* Remove default margin */
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Bar Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #00ffff,
+    #0000ff
+  ); /* Blue gradient */
+  background-size: 200% 200%; /* Larger size to cover the entire header */
+  animation: movingBlueColor 5s linear infinite; /* Adjust duration as needed */
+  padding: 25px;
+  color: white;
+}
+
+@keyframes movingBlueColor {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0), #000, rgba(0, 0, 0, 0));
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  animation: movingBlackGlow 5s linear infinite;
+}
+
+@keyframes movingBlackGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+header img.logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* Add this to your main stylesheet */
+nav {
+  display: flex;
+  align-items: center; /* Center vertically */
+  position: relative; /* Relative position for pseudo-element */
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Adjust thickness as needed */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    #000,
+    rgba(0, 0, 0, 0)
+  ); /* Adjust colors as needed */
+  bottom: 0;
+  left: 0;
+  pointer-events: none; /* Make the pseudo-element non-interactive */
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  margin-right: 10px;
+  position: relative; /* Relative position for the glow effect */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Adjust thickness as needed */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0),
+    #000,
+    rgba(0, 0, 0, 0)
+  ); /* Adjust colors as needed */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0); /* Initially set to zero width */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease; /* Adding transition effect */
+}
+
+nav a:hover::after {
+  transform: scaleX(1); /* Expand to full width on hover */
+  transform-origin: bottom left;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+/* Add this to your main stylesheet */
+.menu-icon {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  margin-right: 5px;
+}
+
+.main-content {
+  flex-grow: 1; /* Grow to fill remaining space */
+  overflow-y: auto; /* Add scroll bar if content overflows */
+  padding: 25px;
+  flex-direction: column;
+}
+
+/* Login and Registration Form Styles */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: none; /* Initially hide the registration form */
+}
+
+.form-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #00ffff,
+    #0000ff
+  ); /* Blue gradient */
+  background-size: 200% 200%;
+  color: white;
+  animation: movingBlueColorText 5s linear infinite; /* Adjust duration as needed */
+}
+
+.form-box.register h2 {
+  background: linear-gradient(
+    90deg,
+    #00ffff,
+    #0000ff,
+    #00ffff
+  ); /* Green gradient */
+  animation: movingGreenColorText 5s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes movingGreenColorText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#entry-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#entry-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#entry-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#entry-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#entry-form button:hover {
+  background-color: #555;
+}
+
+.form-box.login {
+  display: block; /* Show the login form initially */
+}
+
+/* Centered Form Styles */
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 140px; /* Add top margin for spacing from the header */
+  margin-bottom: 140px; /* Add bottom margin for spacing from the footer */
+}
+
+.centered-form_box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px; /* Adjust border-radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.centered-form_box h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  background: linear-gradient(
+    90deg,
+    #ff4400,
+    #ffbb00,
+    #ff0000
+  ); /* Blue gradient */
+  background-size: 200% 200%;
+  color: white;
+  animation: movingBlueColorText 5s linear infinite; /* Adjust duration as needed */
+}
+
+@keyframes movingBlueColorText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#entry-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#entry-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#entry-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#entry-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#entry-form button:hover {
+  background-color: #555;
+}
+
+/* Chat Container */
+.chat-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+  color: #333;
+}
+
+.sidebar-users {
+  margin-top: 20px;
+}
+
+.sidebar-users h4 {
+  color: #333;
+}
+
+.sidebar-users ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-users li {
+  margin-bottom: 5px;
+}
+
+/* Chat Room */
+.chat-room {
+  flex: 1;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.welcome-message {
+  background-color: #e0e0e0;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Display Messages */
+.messages {
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.location-message {
+  display: flex;
+  align-items: center;
+}
+
+/* Message Input Form */
+#message-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+#message {
+  flex: 1;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #0000ff,
+    #4d6b84,
+    #0000ff
+  ); /* Blue gradient */
+  background-size: 200% 200%; /* Larger size to cover the entire header */
+  animation: movingBlueColor 5s linear infinite; /* Adjust duration as needed */
+  padding: 25px;
+  color: white;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    #fff,
+    rgba(255, 255, 255, 0)
+  );
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  animation: movingWhiteGlow 5s linear infinite;
+}
+
+@keyframes movingWhiteGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

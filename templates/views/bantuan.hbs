@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Pengaturan metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- Menambahkan ikon pada tab browser -->
+    <link rel="icon" href="/img/Logo_Sun.png">
+    <!-- Menambahkan stylesheet eksternal -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Bagian Utama Halaman -->
+    <div class="main-content">
+        <!-- Memasukkan file header -->
+        {{>header}}
+
+        <!-- Grup daftar pertanyaan dan jawaban -->
+        <div class="list-group w-100">
+            <!-- Pertanyaan 1 -->
+            <div class="list-group-item" data-toggle-id="shortExampleAnswer1collapse">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Question 1</h5>
+                </div>
+                <p class="mb-1">Halaman ini digunakan untuk apa?</p>
+                <small><u>Learn more</u></small>
+                <!-- Jawaban Pertanyaan 1 -->
+                <div class="collapse mt-3" id="shortExampleAnswer1collapse">
+                    <p>
+                        Pada halaman bantuan ini, kita menjelaskan mengenai suatu website yang kita buat yang mempunyai keterkaitan didalam satu halaman ke halaman lainnya.
+                        Pada Halaman Bantuan ini kita menjelaskan bagaimana fungsi website yang kita buat yaitu berkomunikasi, menyampaikan informasi dan mengetahui sebuah informasi yang sedang terjadi.
+                        Contohnya Dalam hal ini, website aplikasi cuaca digunakan untuk memberikan informasi terkini dan aktual tentang cuaca di wilayah yang kita cari.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pertanyaan 2 -->
+            <div class="list-group-item" data-toggle-id="shortExampleAnswer2collapse">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Question 2</h5>
+                </div>
+                <p class="mb-1">Apa itu API?</p>
+                <small class="text-muted"><u>Learn more</u></small>
+                <!-- Jawaban Pertanyaan 2 -->
+                <div class="collapse mt-3" id="shortExampleAnswer2collapse">
+                    <p>
+                        API stands for Application Programming Interface. Ini adalah seperangkat protokol, rutinitas, dan alat untuk membangun aplikasi perangkat lunak.
+                        API memungkinkan aplikasi perangkat lunak yang berbeda untuk berkomunikasi satu sama lain dan berbagi data.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pertanyaan 3 -->
+            <div class="list-group-item" data-toggle-id="shortExampleAnswer3collapse">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Question 3</h5>
+                </div>
+                <p class="mb-1">API apa yang digunakan dalam aplikasi ini?</p>
+                <small class="text-muted"><u>Learn more</u></small>
+                <!-- Jawaban Pertanyaan 3 -->
+                <div class="collapse mt-3" id="shortExampleAnswer3collapse">
+                    <p>
+                        Dalam konteks situs web yang menggunakan informasi tentang cuaca dan berita, API dari Mapbox dan Mediastack memungkinkan situs web mengakses alat dan layanan yang disediakan oleh platform ini secara terprogram.
+                        Misalnya, situs web dapat menggunakan Mapbox API untuk mengambil informasi tentang peta, navigasi, pencarian, dan akun.
+                        Dengan menggunakan API tersebut, website dapat memberikan informasi terkini dan akurat kepada penggunanya tanpa harus memperbarui data secara manual.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pertanyaan 4 -->
+            <div class="list-group-item" data-toggle-id="shortExampleAnswer4collapse">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Question 4</h5>
+                </div>
+                <p class="mb-1">Salah satu arsitektur API adalah (SOAP, RESTful, GraphQL, atau gRPC).</p>
+                <small class="text-muted"><u>Learn more</u></small>
+                <!-- Jawaban Pertanyaan 4 -->
+                <div class="collapse mt-4" id="shortExampleAnswer4collapse">
+                    <p>
+                        Website ini menggunakan RESTful API dari Mapbox untuk bagian infocuaca.
+                        RESTful API digunakan untuk mengambil informasi tentang peta, navigasi, pencarian, dan akun, sedangkan GraphQL API digunakan untuk mengambil artikel berita dan konten media lainnya.
+                        RESTful API menggunakan permintaan HTTP untuk GET, POST, PUT, dan DELETE data, sedangkan GraphQL API menggunakan bahasa kueri untuk mengambil data.
+                        Kedua arsitektur API memiliki keunggulan dan kasus penggunaannya masing-masing, dan pilihan arsitektur API bergantung pada kebutuhan dan persyaratan spesifik situs web serta platform yang terintegrasi dengannya.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script untuk mengatur visibilitas jawaban -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const items = document.querySelectorAll(".list-group-item");
+
+            items.forEach(item => {
+                item.addEventListener("click", function () {
+                    const collapseId = this.getAttribute("data-toggle-id");
+                    const collapse = document.getElementById(collapseId);
+
+                    if (collapse) {
+                        collapse.classList.toggle("show");
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Memasukkan file footer -->
+    {{>footer}}
+</body>
+</html>

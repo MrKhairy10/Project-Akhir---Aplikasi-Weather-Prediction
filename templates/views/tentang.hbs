@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Pengaturan metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- Menambahkan ikon pada tab browser -->
+    <link rel="icon" href="/img/Logo_Sun.png">
+    <!-- Menambahkan stylesheet eksternal -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Bagian Utama Halaman -->
+    <div id="profile-content" class="main-content">
+        <!-- Memasukkan file header -->
+        {{> header}}
+        <!-- Kontainer profil -->
+        <div class="profile-container">
+            <!-- Gambar profil -->
+            <div class="profile-image">
+                <img src="/img/Khairy.jpg" alt="Khairy's Photo">
+            </div>
+            <!-- Informasi profil -->
+            <div class="profile-info">
+                <h1>{{title}}</h1>
+                <p>Saya Seorang Mahasiswa aktif semester 5 Program Studi S1 Informatika (NK) Universitas Negeri Padang angkatan tahun 2021. Saya memiliki minat agar bisa menjadi programmer handal dan hebat.</p>
+                <!-- Informasi personal -->
+                <ul>
+                    <li>Umur: 20 tahun</li>
+                    <li>Email: mubarakhairy10@gamil.com</li>
+                    <li>Nomor HP: +62 822-xxxx-xxxx</li>
+                    <li>Alamat: Parupuk Tabing, Koto Tangah, Padang, Sumatera Barat</li>
+                    <li>Bahasa: Bahasa Indonesia, Bahasa Minang</li>
+                </ul>
+                <!-- Informasi pendidikan -->
+                <div class="education-info">
+                    <h2>Pendidikan</h2>
+                    <ul>
+                        <li>Profesi: Mahasiswa</li>
+                        <li>NIM: 21343083</li>
+                        <li>Universitas: Universitas Negeri Padang</li>
+                        <li>Prodi: Informatika NK</li>
+                        <li>Jurusan: Teknik Elektronika</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Tambahkan informasi lainnya sesuai kebutuhan -->
+    </div>
+    <!-- Memasukkan file footer -->
+    {{> footer}}
+</body>
+
+</html>

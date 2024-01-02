@@ -1,0 +1,31 @@
+<!-- Bagian Header -->
+<header>
+  <!-- Menampilkan logo -->
+  <img src="/img/Logo_Sun.png" alt="Home" class="logo-icon" />
+
+  <!-- Menampilkan judul halaman -->
+  <h1>{{title}}</h1>
+
+  <!-- Navigasi Menu -->
+  <nav>
+    <!-- Link menuju halaman Home -->
+    <a href="/"><img src="/img/Icon_Home.png" alt="Home" class="menu-icon" />Home</a>
+
+    <!-- Link menuju halaman Project -->
+    <a href="/project"><img src="/img/Icon_Cuaca.png" alt="Project" class="menu-icon" /> Project</a>
+
+    <!-- Link menuju halaman About -->
+    <a href="/tentang"><img src="/img/Icon_About.png" alt="Tentang Saya" class="menu-icon" /> About</a>
+
+    <!-- Link menuju halaman Help -->
+    <a href="/bantuan"><img src="/img/Icon_Help.png" alt="Bantuan" class="menu-icon" /> Help</a>
+
+    <!-- Link menuju halaman Akun -->
+    <a href="/login"><img src="/img/Icon_Person.png" alt="Akun" class="menu-icon" /> Akun</a>
+
+    <!-- Menampilkan link Logout jika pengguna telah autentikasi -->
+    {{#if isAuthenticated}}
+      <a href="/logout"><img src="/img/Icon_Exit.png" alt="Logout" class="menu-icon" />Logout</a>
+    {{/if}}
+  </nav>
+</header>

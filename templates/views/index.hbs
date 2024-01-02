@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Pengaturan metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- Menambahkan ikon pada tab browser -->
+    <link rel="icon" href="/img/Logo_Sun.png">
+    <!-- Menambahkan stylesheet eksternal -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <!-- Bagian Utama Halaman -->
+  <div class="main-content" id="index-content">
+    <!-- Include file header -->
+    {{> header}}
+
+    <!-- Bagian Kiri Halaman -->
+    <div id="left-section">
+      <img id="sun-icon" src="/img/Icon_Sun.png" alt="Sun Icon">
+    </div>
+
+    <!-- Bagian Kanan Halaman -->
+    <div id="right-section">
+      <!-- Struktur Kondisional Handlebars -->
+      {{#if name}}
+        <h2>Hi {{name}}</h2>
+      {{else}}
+        <h2>Selamat datang di Website {{naming}} !!</h2>
+      {{/if}}
+      
+      <p>Network Programming</p>
+
+      <!-- Link Menuju Akun Sosial -->
+      <div>
+        <a href="https://github.com/MrKhairy10" target="_blank">
+          <img id="github-icon" src="/img/Icon_Github.png" alt="GitHub Icon">
+        </a>
+        <a href="https://instagram.com/muba_rakh03?igshid=OGU0MmVlOWVjOQ==" target="_blank">
+          <img id="ig-icon" src="/img/Icon_IG.png" alt="Instagram Icon">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include file footer -->
+  {{> footer}}
+</body>
+</html>
